@@ -1,0 +1,49 @@
+<!-- signup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+  <div class="main">
+    <h2>Sign Up</h2>
+  <form id="signupForm">
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" required />
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required />
+    </div>
+    <button type="submit">Sign Up</button>
+    <p>Already have an account?<a href = "login.html">Login</a></p>
+  </form>
+  </div>
+
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      localStorage.setItem("username", username);
+      localStorage.setItem("password", password);
+      if(username === '' || password === '') {
+        alert("Please fill in all the details.");
+        return; // Prevent further execution
+      }
+
+      alert("Sign up successful! You can now log in.");
+      
+      // Optionally, redirect to login page
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>
